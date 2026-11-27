@@ -19,6 +19,8 @@ import {
 type ToolEntry = Extract<Entry, { kind: "tool" }>;
 type Block = Record<string, unknown>;
 
+/** hc wraps text it delivers on behalf of another terminal: <hc from="t3">…</hc>. */
+const HC_NOTE = /^<hc\b[^>]*>([\s\S]*)<\/hc>$/;
 const HARNESS_TEXT = /^(<(command-|local-command-|task-notification|bash-)|\[Request interrupted)/;
 
 function blocks(content: unknown): Block[] {
@@ -39,6 +41,8 @@ function personText(text: string): string | null {
   const clean = text
     .replace(/<system-reminder>[\s\S]*?<\/system-reminder>/g, "")
     .replace(/\[Image[^\]]*\]/g, "")
+    .trim()
+    .replace(HC_NOTE, "$1")
     .trim();
   if (!clean || HARNESS_TEXT.test(clean)) return null;
   return clean;
