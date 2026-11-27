@@ -8,7 +8,7 @@ export interface TranscriptParser {
   feed(line: string): Entry[];
 }
 
-const OUTPUT_CHARS = 20_000;
+const OUTPUT_CHARS = 8_000;
 const DIFF_LINES = 400;
 
 export function parseAll(parser: TranscriptParser, lines: Iterable<string>): Entry[] {

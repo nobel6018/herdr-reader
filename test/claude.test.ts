@@ -41,6 +41,11 @@ describe("Claude Code transcript", () => {
     expect(entry).toMatchObject({ kind: "user", text: "배포해줘" });
   });
 
+  test("text hc delivered for another terminal shows without its <hc> wrapper", () => {
+    const [entry] = parseAll(createClaudeParser(), [user("u1", '<hc from="t3">계속 진행해</hc>')]);
+    expect(entry).toMatchObject({ kind: "user", text: "계속 진행해" });
+  });
+
   test("a Bash call shows its command and pairs with its result by id", () => {
     const entries = parseAll(createClaudeParser(), [
       assistant("a1", [{ type: "tool_use", id: "toolu_1", name: "Bash", input: { command: "bun test\necho done" } }]),
