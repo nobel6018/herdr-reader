@@ -37,7 +37,7 @@ function screenEntry(text: string): Entry {
 }
 
 function flat(text: string): string {
-  const one = text.replace(/\s+/g, " ").trim();
+  const one = text.replace(/\*\*|`|^#+ /gm, "").replace(/\s+/g, " ").trim();
   return one.length > LAST_TEXT_CHARS ? `${one.slice(0, LAST_TEXT_CHARS)}…` : one;
 }
 

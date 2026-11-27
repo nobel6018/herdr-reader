@@ -89,6 +89,7 @@ button:focus-visible, summary:focus-visible, textarea:focus-visible, a:focus-vis
   gap: 10px;
 }
 
+.body > * { flex: none; }
 .sum { display: flex; gap: 8px; }
 .sum div { flex: 1; background: var(--soft); border-radius: 12px; padding: 8px 10px; }
 .sum b { display: block; font-size: 1.2rem; font-variant-numeric: tabular-nums; }
@@ -177,7 +178,7 @@ button:focus-visible, summary:focus-visible, textarea:focus-visible, a:focus-vis
 .out { padding: 8px 10px; color: var(--muted); }
 .screen { padding: 8px 10px; background: var(--soft); border-radius: 10px; max-height: none; }
 
-.working { font-size: 0.82rem; color: var(--run); display: flex; gap: 6px; align-items: center; }
+.busy { font-size: 0.82rem; color: var(--run); display: flex; gap: 6px; align-items: center; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--run); animation: pulse 1.2s infinite; }
 @keyframes pulse { 50% { opacity: 0.25; } }
 @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
@@ -185,7 +186,7 @@ button:focus-visible, summary:focus-visible, textarea:focus-visible, a:focus-vis
 .ask { border: 1px solid var(--wait); background: var(--wait-bg); border-radius: 12px; padding: 10px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px; }
 .ask .screen { background: var(--panel); max-height: 40vh; overflow-y: auto; }
 .btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn { flex: 1; min-width: 44px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 600; font-size: 0.9rem; cursor: pointer; padding: 0 12px; }
+.btn { flex: 1 1 auto; white-space: nowrap; min-width: 44px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 600; font-size: 0.9rem; cursor: pointer; padding: 0 12px; }
 .btn.pri { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 .comp {

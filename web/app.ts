@@ -304,7 +304,7 @@ function updateChrome(): void {
     if (screenTimer) clearInterval(screenTimer);
     screenTimer = null;
     const stick = atBottom(view.scroller);
-    view.live.replaceChildren(working ? h("div", { class: "working" }, h("span", { class: "dot" }), "작업 중") : "");
+    view.live.replaceChildren(working ? h("div", { class: "busy" }, h("span", { class: "dot" }), "작업 중") : "");
     if (stick) view.scroller.scrollTop = view.scroller.scrollHeight;
   }
 }
